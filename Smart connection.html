@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+
+    <title>Tim Spies</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-softy-pinko.css">
+
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="assets/images/Logo3.png" style="height: 43px; width: 117px;" alt="TIM"/>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="index.html">Over mij</a></li>
+                            <li><a href="Smart start.html">Smart Start</a></li>
+                            <li><a href="Smart business.html">Smart Business</a></li>
+                            <li><a href="Smart connection.html" class="active">Smart Connection</a></li>
+                            <li><a href="Smart technology.html">Smart Technology</a></li>
+                            <li><a href="Smart project.html">Smart Project</a></li>
+                            <li><a href="Competenties.html">Competenties</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" style="background-image: url('assets/images/banner-bg.png');" id="welcome">
+
+        <!-- ***** Header Text Start ***** -->
+        <div class="header-text"  style="text-shadow: 1px 1px 32px #000;">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-xl-15 col-xl-7 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                        <h1>Welkom op de pagina <strong>Smart Connection</strong></h1>
+                        <p>Op deze pagina zijn verschillende API's te vinden. Deze API's zijn gemaakt in opdracht van het vak "Smart Connection".</p>
+                        <a href="#accordionExample" class="main-button-slider">Ontdek meer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
+
+    <!-- ***** Content Area Start ***** -->
+    <section class="section">
+        <div class="content-container">
+            <div class="accordion" id="accordionExample">
+
+                <div class="card">
+                    <div class="card-header" id="headingZero">
+                        <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseZero"
+                            aria-expanded="true" aria-controls="collapseZero">
+                            Contactformulier
+                        </button>
+                    </div>
+                    <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <h2>Contact pagina</h2>
+                            <p>
+                                Voor mijn contactformulier, zie de pagina: <a href="Contact.html"><b>Contact</b></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Het weerbericht
+                        </button>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            
+                            <h2>Het weer in Nijmegen</h2>
+                            
+                            <div id="weather">
+                                <div id="description"></div>
+                                <h1 id="temp"></h1>
+                                <div id="location"></div>
+                            </div>
+                                               
+                            <script lang="text/javascript">
+
+                                function weatherBalloon(cityID) {
+                                    var key = '991ed2c6a0017a324088b56d1d10815c';
+                                    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID + '&appid=' + key)
+                                        .then(function (resp) { return resp.json() }) // Convert data to json
+                                        .then(function (data) {
+                                            console.log(data);
+                                        })
+                                        .catch(function () {
+                                            // catch any errors
+                                        });
+                                }
+
+                                window.onload = function () {
+                                    weatherBalloon(2750053);
+                                }
+
+                                function drawWeather(d) {
+                                    var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+                                    var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
+                                    var description = d.weather[0].description;
+
+                                    document.getElementById('description').innerHTML = description;
+                                    document.getElementById('temp').innerHTML = celcius + '&deg;';
+                                    document.getElementById('location').innerHTML = d.name;
+
+                                    if (description.indexOf('rain') > 0) {
+                                        document.body.className = 'rainy';
+                                    } else if (description.indexOf('cloud') > 0) {
+                                        document.body.className = 'cloudy';
+                                    } else if (description.indexOf('sunny') > 0) {
+                                        document.body.className = 'sunny';
+                                    }
+                                }
+                                function weatherBalloon(cityID) {
+                                    var key = '991ed2c6a0017a324088b56d1d10815c';
+                                    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID + '&appid=' + key)
+                                        .then(function (resp) { return resp.json() }) // Convert data to json
+                                        .then(function (data) {
+                                            drawWeather(data); // Call drawWeather
+                                        })
+                                        .catch(function () {
+                                            // catch any errors
+                                        });
+                                }
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <button class="btn btn-dark collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Het coronavirus
+                        </button>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            
+                            <script lang="text/javascript">
+                                fetch('https://api.covid19api.com/summary')
+                                    .then(function (resp) { return resp.json() }) //convert data to json
+                                    .then(function (data) 
+                                    
+                                    {
+                                        console.log(data);
+                                        console.log(data.Countries[119].Country);
+                                        console.log(data.Countries[119].TotalDeaths);
+
+                                        document.getElementById("Country").innerHTML = (data.Countries[119].Country);
+                                        document.getElementById("Date").innerHTML = (data.Countries[119].Date);
+                                        document.getElementById("NewConfirmed").innerHTML = (data.Countries[119].NewConfirmed);
+                                        document.getElementById("TotalConfirmed").innerHTML = (data.Countries[119].TotalConfirmed);
+                                        document.getElementById("NewDeaths").innerHTML = (data.Countries[119].NewDeaths);
+                                        document.getElementById("TotalDeaths").innerHTML = (data.Countries[119].TotalDeaths);
+                                    })
+
+                                    .catch(function () {
+                                        //catch any errors
+                                    }); 
+
+                            </script>
+                            <h2 class="a">Covid-19 numbers in <div id="Country" class="a"></div></h2>
+                            <p class="a"><b>Date: </b><div id="Date" class="a"></div> </p>
+                            <p class="a"><b>New Confirmed: </b><div id="NewConfirmed" class="a"></div></p>
+                            <p class="a"><b>New Deaths: </b><div id="NewDeaths" class="a"></div></p>
+                            <p class="a"><b>Total Confirmed: </b><div id="TotalConfirmed" class="a"></div></p>
+                            <p class="a"><b>Total Deaths: </b><div id="TotalDeaths" class="a"></div></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <button class="btn btn-dark collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Google Maps
+                        </button>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <h2>Nijmegen</h2>
+                            <p>Hieronder is Google Maps te zien. Hierin is Nijmegen uitgelicht.</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d78879.55034038675!2d5.763092074418883!3d51.84295236133641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c70878fd1ba53b%3A0xe71e6ef382b413f3!2sNijmegen!5e0!3m2!1snl!2snl!4v1611050676186!5m2!1snl!2snl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <button class="btn btn-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                            Artificial Intelligence
+                        </button>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <h2>Teachable Machine Image Model</h2>
+                            <p>
+                                Door gebruik te maken van <b>Artificial Intelligence</b> kan deze webpagina controleren je jouw duim <b>omhoog</b> of <b>omlaag</b> houdt. <br>
+                                Klik op 'start' en probeer het uit!<br>
+                                <i>Tip: Houd je hand dicht bij de webcam!</i>
+                            </p>        
+
+                            <button class="btn btn-primary" style="margin-bottom: 20px;" type="button" onclick="init()">Start</button>
+                            <div id="webcam-container"></div>
+                            <div id="label-container"></div>
+                            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+                            <script type="text/javascript">
+                                // More API functions here:
+                                // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+                                // the link to your model provided by Teachable Machine export panel
+                                const URL = "https://teachablemachine.withgoogle.com/models/q69F00jUy/";
+
+                                let model, webcam, labelContainer, maxPredictions;
+
+                                // Load the image model and setup the webcam
+                                async function init() {
+                                    const modelURL = URL + "model.json";
+                                    const metadataURL = URL + "metadata.json";
+
+                                    // load the model and metadata
+                                    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+                                    // or files from your local hard drive
+                                    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                                    model = await tmImage.load(modelURL, metadataURL);
+                                    maxPredictions = model.getTotalClasses();
+
+                                    // Convenience function to setup a webcam
+                                    const flip = true; // whether to flip the webcam
+                                    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+                                    await webcam.setup(); // request access to the webcam
+                                    await webcam.play();
+                                    window.requestAnimationFrame(loop);
+
+                                    // append elements to the DOM
+                                    document.getElementById("webcam-container").appendChild(webcam.canvas);
+                                    labelContainer = document.getElementById("label-container");
+                                    for (let i = 0; i < maxPredictions; i++) { // and class labels
+                                        labelContainer.appendChild(document.createElement("div"));
+                                    }
+                                }
+
+                                async function loop() {
+                                    webcam.update(); // update the webcam frame
+                                    await predict();
+                                    window.requestAnimationFrame(loop);
+                                }
+
+                                // run the webcam image through the image model
+                                async function predict() {
+                                    // predict can take in an image, video or canvas html element
+                                    const prediction = await model.predict(webcam.canvas);
+                                    for (let i = 0; i < maxPredictions; i++) {
+                                        const classPrediction =
+                                            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                                        labelContainer.childNodes[i].innerHTML = classPrediction;
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ***** Content Area End ***** -->
+
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <ul class="social">
+                        <li><a href="https://www.linkedin.com/in/tim-spies/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="Contact.html"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="https://github.com/timspies98" target="_blank"><i class="fa fa-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright">Minor Smart Industrie 2020/2021 - Portfolio Tim Spies</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>
