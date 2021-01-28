@@ -217,12 +217,12 @@ body {
 }
 
 ::selection {
-  background: #ff589e;
+  background: #0080ff;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #ff589e;
+  background: #0080ff;
   color: #fff;
 }
 
@@ -553,6 +553,71 @@ header
   border-bottom-style: solid;
 }
 
+/* 
+---------------------------------------------
+Submenu
+--------------------------------------------- 
+*/
+.header-area .main-nav .nav li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+  margin-left: 42%;
+  width: 230px;
+  background-color: #FFF;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px rgb(0 0 0 / 20%);
+}
+
+.header-area .main-nav .nav li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.header-area .main-nav .nav li ul li {
+  clear: both;
+  width: 100%;
+  border-bottom: 1px solid #CED4DA;
+}
+
+.header-area .main-nav .nav li ul li:last-child {
+  clear: both;
+  width: 100%;
+  border-bottom: none;
+}
+
+.header-area .main-nav .nav li ul li a:hover {
+  border-style: none;
+}
+
+.header-area .main-nav .nav li ul li:hover:first-child {
+  background-color: #E9ECEF;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.header-area .main-nav .nav li ul li:hover {
+  background-color: #E9ECEF;
+}
+
+.header-area .main-nav .nav li ul li:hover:last-child {
+  background-color: #E9ECEF;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* 
+---------------------------------------------
+Submenu
+--------------------------------------------- 
+*/
+
 .header-area .main-nav .menu-trigger {
   cursor: pointer;
   display: block;
@@ -799,7 +864,7 @@ welcome
     background-image: url(../images/BackgroundPhone.png);
   }
   .welcome-area .container {
-    height: 50%;
+    height: 60%;
     max-width: 100vh;
     text-align: center;
   }
@@ -820,7 +885,7 @@ welcome
     line-height: 40px;
   }
   .welcome-area .container {
-    height: 40%;
+    height: 50%;
   }
 }
 
