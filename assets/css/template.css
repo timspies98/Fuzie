@@ -1675,7 +1675,7 @@ preloader
 */
 #preloader {
   overflow: hidden;
-  background-image: linear-gradient(135deg, #a759d1 0%, #8261ee 100%);
+  background-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);
   left: 0;
   right: 0;
   top: 0;
